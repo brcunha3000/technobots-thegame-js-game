@@ -25,9 +25,9 @@ window.onload = function () {
         const key = event.key;
         const possibleKeystrokes = [
             "ArrowLeft",
-            "ArrowUp",
+            "Space",
             "ArrowRight",
-            "ArrowDown"
+            "ShiftRight"
           
         ]
     
@@ -42,13 +42,13 @@ window.onload = function () {
                 case "ArrowLeft": 
                 game.player.directionX = -1;
                 break;
-              case "ArrowUp": 
-                game.player.directionY = -1;
+              case "Space": 
+                game.player.directionY = 10;
                 break;
               case "ArrowRight": 
                 game.player.directionX = 1;
                 break;
-              case "ArrowDown": 
+              case "ShiftRight": 
                 game.player.directionY = 1;
                 break;
             }
@@ -60,9 +60,9 @@ window.onload = function () {
         const key = event.key;
         const possibleKeystrokes = [
             "ArrowLeft",
-            "ArrowUp",
+            "Space",
             "ArrowRight",
-            "ArrowDown"
+            "ShiftRight"
         ]
     
         // Check if the pressend key belong to the array of possible keys
@@ -76,13 +76,13 @@ window.onload = function () {
                 case "ArrowLeft": 
                 game.player.directionX = 0;
                 break;
-              case "ArrowUp": 
+              case "Space": 
                 game.player.directionY = 0;
                 break;
               case "ArrowRight": 
                 game.player.directionX = 0;
                 break;
-              case "ArrowDown": 
+              case "ShiftRight": 
                 game.player.directionY = 0;
                 break;
             }

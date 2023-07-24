@@ -1,7 +1,7 @@
 #startScreen{
     width: 1280px;
     height: 720px;
-    background-image: url(/images/start-screen.gif);
+    background-image: url(/docs/images/start-screen.gif);
     border: 5px solid black;
     position: relative;
     overflow: hidden;
@@ -72,7 +72,7 @@
     display: none;
     width: 1280px;
     height: 720px;
-    background-image: url(/images/gamescreen-background.png);
+    background-image: url(/docs/images/gamescreen-background.png);
     background-size: cover;
     position: relative;
     overflow: hidden;
@@ -114,15 +114,3 @@
         background-position: -3840px 0;
     }
 }
-
-
-
-/*.test{
-    width: 100px;
-    height: 100px;
-    background-color: black;
-    position: absolute;
-    display: flex;
-    margin-top: 450px;
-    margin-left: 100px;
-}*/

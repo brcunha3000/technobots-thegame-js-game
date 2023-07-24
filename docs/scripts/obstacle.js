@@ -6,7 +6,7 @@ class ObstacleBottom {
         this.width = 100;
         this.height = 150;
         this.element = document.createElement("img");
-        this.element.src = "./images/bottom-obstacle.gif";
+        this.element.src = "./docs/images/bottom-obstacle.gif";
         this.element.style.position = "absolute";
         this.element.style.top = `${this.top}px`;
         this.element.style.left = `${this.left}px`;

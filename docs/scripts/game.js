@@ -12,7 +12,7 @@ class Game {
             450,
             100,
             150,
-            "./images/player-idle-right.gif"
+            "./docs/images/player-idle-right.gif"
 
         );
         
