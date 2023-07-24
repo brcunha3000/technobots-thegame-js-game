@@ -1,0 +1,128 @@
+#startScreen{
+    width: 1280px;
+    height: 720px;
+    background-image: url(/images/start-screen.gif);
+    border: 5px solid black;
+    position: relative;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    border-radius: 5px;
+}
+
+#button-start {
+    color: black;
+    text-transform: uppercase;
+    justify-content: center;
+    width: 25%;
+    height: 80px;
+    border-radius: 5px;
+    margin-top: 15%;
+    font-weight: bold;
+    font-size: 30px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin-left: 375px;
+    animation: rotate-scale-down-horizontal 0.4s linear both;
+    cursor: crosshair;
+    box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
+    position: relative;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+#button-credits {
+    color:black;
+    text-transform: uppercase;
+    justify-content: center;
+    width: 25%;
+    height: 80px;
+    margin-top: 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 30px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin-left: 375px;
+    animation: rotate-scale-down-horizontal 0.4s linear both;
+    box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
+    position: relative;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    cursor: crosshair;
+}
+
+ /*This keyframe makes the buttons animate*/
+@keyframes rotate-scale-down-horizontal{
+    0%{
+        transform:scale(1) rotateX(0);
+    } 
+    50% {
+        transform:scale(.5) rotateX(-180deg);
+    }
+    100% {
+        transform:scale(1) rotateX(-360deg);
+    }
+}
+
+#gameScreen {
+    display: none;
+    width: 1280px;
+    height: 720px;
+    background-image: url(/images/gamescreen-background.png);
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+    animation: slide 30s linear infinite;
+    justify-content: center;
+    align-items: center;
+    border: 5px solid black;
+    margin: 0 auto;
+    border-radius: 5px;
+    
+    
+}
+
+#lives {
+   color: red; 
+   height: 50px;
+   width: 100%;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;  
+   align-content: center;
+   background-color: black;
+   text-transform: uppercase;
+   font-size: 20px;
+ 
+}
+
+#numOfLives{
+    font-size: 20px;
+
+}
+
+/* This keyframe make the background slide to the left*/
+@keyframes slide {
+    0% {
+        background-position: 3840px 0;
+    }
+    100% {
+        background-position: -3840px 0;
+    }
+}
+
+
+
+/*.test{
+    width: 100px;
+    height: 100px;
+    background-color: black;
+    position: absolute;
+    display: flex;
+    margin-top: 450px;
+    margin-left: 100px;
+}*/
