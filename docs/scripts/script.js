@@ -1,16 +1,25 @@
 window.onload = function () {
     const startButton = document.getElementById("button-start");
     const creditsButton = document.getElementById("button-credits");
-  
+    const creditsScreen = document.getElementById("creditsScreen");
+    
     startButton.addEventListener("click", function () {
       startGame();
     });
   
     let game;
   
-    /*creditsButton.addEventListener("click", function() {
-      /location.reload();
-    })*/
+    creditsButton.addEventListener("click", function() {
+      startScreen.style.display = "none";      
+      creditsScreen.style.display = "block";
+    })
+
+    const returnButton = document.querySelector(".return-arrow")
+    returnButton.addEventListener("click", function () {
+      creditsScreen.style.display = "none";
+      startScreen.style.display = "block";
+    })
+
 
     function startGame() {
         console.log("start game");
@@ -18,17 +27,16 @@ window.onload = function () {
         game = new Game();
     
         game.start();
-        console.log(game)
+        
     }
 
     function handleKeyDown (event) {
         const key = event.key;
         const possibleKeystrokes = [
             "ArrowLeft",
-            "Space",
+            "ArrowUp",
             "ArrowRight",
-            "ShiftRight"
-          
+
         ]
     
         // Check if the pressend key belong to the array of possible keys
@@ -40,16 +48,14 @@ window.onload = function () {
           if (game) {
             switch(key){
                 case "ArrowLeft": 
-                game.player.directionX = -1;
+                game.player.directionX = -5;
                 break;
-              case "Space": 
-                game.player.directionY = 10;
+              case "ArrowUp": 
+                game.player.directionY = -10;
+                console.log('here')
                 break;
               case "ArrowRight": 
-                game.player.directionX = 1;
-                break;
-              case "ShiftRight": 
-                game.player.directionY = 1;
+                game.player.directionX = 5;
                 break;
             }
           }
@@ -60,9 +66,8 @@ window.onload = function () {
         const key = event.key;
         const possibleKeystrokes = [
             "ArrowLeft",
-            "Space",
-            "ArrowRight",
-            "ShiftRight"
+            "ArrowUp",
+            "ArrowRight"
         ]
     
         // Check if the pressend key belong to the array of possible keys
@@ -76,14 +81,11 @@ window.onload = function () {
                 case "ArrowLeft": 
                 game.player.directionX = 0;
                 break;
-              case "Space": 
-                game.player.directionY = 0;
+              case "ArrowUp": 
+                game.player.directionY = 10;
                 break;
               case "ArrowRight": 
                 game.player.directionX = 0;
-                break;
-              case "ShiftRight": 
-                game.player.directionY = 0;
                 break;
             }
           }
