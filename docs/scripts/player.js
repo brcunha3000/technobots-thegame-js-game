@@ -47,13 +47,13 @@ class Player {
     didCollide(obstacle){
         const playerRect = this.element.getBoundingClientRect();
         const obstacleRect = obstacle.element.getBoundingClientRect();
-        let collision = false;
+        
 
         if (playerRect.left < obstacleRect.right && playerRect.right > obstacleRect.left && playerRect.top < obstacleRect.bottom && playerRect.bottom > obstacleRect.top) {
-            collision = true;
+
             return true;
         } else {
-            
+
             return false;
         }
     }

@@ -1,3 +1,11 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
 #startScreen{
     width: 1280px;
     height: 720px;
@@ -120,7 +128,7 @@
     width: 1280px;
     height: 720px;  
     display: none;
-    position: absolute;
+    position: relative;
     border: 5px solid black;
     border-radius: 5px;
     overflow: hidden;
@@ -142,4 +150,79 @@
     background-repeat: no-repeat;
     background-position: center;
     cursor: crosshair;
+}
+
+#gameEndScreen{
+    background-image: url(/docs/images/lost-game-screen.gif);
+    width: 1280px;
+    height: 720px;  
+    display: none;
+    position: relative;
+    border: 5px solid black;
+    border-radius: 5px;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 5px;
+    margin: 0 auto;
+}
+
+.button-return-startScreen{        
+    color: black;
+    text-transform: uppercase;
+    justify-content: center;
+    width: 25%;
+    height: 80px;
+    border-radius: 5px;
+    margin-top: 15%;
+    font-weight: bold;
+    font-size: 30px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin-left: 375px;
+    animation: rotate-scale-down-horizontal 0.4s linear both;
+    cursor: crosshair;
+    box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
+    position: relative;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.button-restart{
+    color: black;
+    text-transform: uppercase;
+    justify-content: center;
+    width: 25%;
+    height: 80px;
+    border-radius: 5px;
+    margin-top: 15%;
+    font-weight: bold;
+    font-size: 30px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin-left: 375px;
+    animation: rotate-scale-down-horizontal 0.4s linear both;
+    cursor: crosshair;
+    box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
+    position: relative;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+#victoryScreen {
+    /*background-image: url(/docs/images/lost-game-screen.gif);*/
+    background-color: black;
+    width: 1280px;
+    height: 720px;  
+    display: none;
+    position: relative;
+    border: 5px solid black;
+    border-radius: 5px;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 5px;
+    margin: 0 auto;
 }

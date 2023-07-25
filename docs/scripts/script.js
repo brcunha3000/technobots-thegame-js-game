@@ -3,8 +3,10 @@ window.onload = function () {
     const creditsButton = document.getElementById("button-credits");
     const creditsScreen = document.getElementById("creditsScreen");
     
+    
     startButton.addEventListener("click", function () {
       startGame();
+
     });
   
     let game;
@@ -18,9 +20,32 @@ window.onload = function () {
     returnButton.addEventListener("click", function () {
       creditsScreen.style.display = "none";
       startScreen.style.display = "block";
+      restartGame();
     })
 
+    let returnStartMenu = document.querySelector(".button-return-startScreen")
+    returnStartMenu.addEventListener("click", function () {
+      gameEndScreen.style.display = "none";
+      startScreen.style.display = "block";
+    })
 
+    const restartButton = document.querySelector(".button-restart")
+    restartButton.addEventListener("click", function () {
+      gameEndScreen.style.display = "none";
+      gameScreen.style.display = "block";
+      startGame();
+    })
+
+    const returnStartMenuFromVictory = document.querySelector(".button-return-startScreen-2")
+    returnStartMenuFromVictory.addEventListener("click", function () {
+      victoryScreen.style.display = "none";
+      startScreen.style.display = "block";
+      restartGame();
+    })
+    function restartGame(){
+      location.reload();
+    }
+    
     function startGame() {
         console.log("start game");
     

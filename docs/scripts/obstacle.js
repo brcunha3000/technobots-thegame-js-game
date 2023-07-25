@@ -19,11 +19,26 @@ class ObstacleBottom {
     
     updatePosition(){
         this.element.style.left = `${this.left}px`;
-        this.element.style.top = `${this.top}px`
     }
 
     move(){        
         this.left -= 3;
         this.updatePosition();
+    }
+
+    collidedWithPlayer(player) {
+        const playerRect = player.element.getBoundingClientRect();
+        const obstacleRect = this.element.getBoundingClientRect();
+
+        if (
+            playerRect.left < obstacleRect.right &&
+            playerRect.right > obstacleRect.left &&
+            playerRect.top < obstacleRect.bottom &&
+            playerRect.bottom > obstacleRect.top
+        ) {
+            return true; 
+        }
+
+        return false; 
     }
 }
