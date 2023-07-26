@@ -108,6 +108,7 @@ class Game {
     victoryGame(){
         this.player.element.remove();
         this.obstacles.forEach(obstacle => {
+            obstacle.element.remove();
         });
       
         this.gameIsOver = true;
@@ -119,6 +120,7 @@ class Game {
     endGame() {
         this.player.element.remove();
         this.obstacles.forEach(obstacle => {
+            obstacle.element.remove();
         });
       
         this.gameIsOver = true;

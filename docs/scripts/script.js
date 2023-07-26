@@ -8,7 +8,7 @@ window.onload = function () {
       startGame();
 
     });
-  
+    
     let game;
   
     creditsButton.addEventListener("click", function() {
@@ -27,13 +27,15 @@ window.onload = function () {
     returnStartMenu.addEventListener("click", function () {
       gameEndScreen.style.display = "none";
       startScreen.style.display = "block";
+      location.reload();
     })
 
     const restartButton = document.querySelector(".button-restart")
     restartButton.addEventListener("click", function () {
       gameEndScreen.style.display = "none";
-      gameScreen.style.display = "block";
+        
       startGame();
+      
     })
 
     const returnStartMenuFromVictory = document.querySelector(".button-return-startScreen-2")
@@ -42,6 +44,7 @@ window.onload = function () {
       startScreen.style.display = "block";
       restartGame();
     })
+
     function restartGame(){
       location.reload();
     }
@@ -50,6 +53,7 @@ window.onload = function () {
         console.log("start game");
     
         game = new Game();
+        ;
     
         game.start();
         

@@ -166,16 +166,17 @@ body {
     flex-direction: column;
     border-radius: 5px;
     margin: 0 auto;
+    flex-direction: column;
 }
 
 .button-return-startScreen{        
     color: black;
     text-transform: uppercase;
     justify-content: center;
-    width: 25%;
-    height: 80px;
+    width: 15%;
+    height: 50px;
     border-radius: 5px;
-    margin-top: 15%;
+    margin-top: 20%;
     font-weight: bold;
     font-size: 30px;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
@@ -187,16 +188,20 @@ body {
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
+    display:flex;
+    left: 675px;
+    top: 305px;
+    
 }
 
 .button-restart{
     color: black;
     text-transform: uppercase;
     justify-content: center;
-    width: 25%;
-    height: 80px;
+    width: 15%;
+    height: 50px;
     border-radius: 5px;
-    margin-top: 15%;
+    margin-top: 15px;
     font-weight: bold;
     font-size: 30px;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
@@ -208,6 +213,9 @@ body {
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
+    display:flex;
+    left: 675px;
+    top: 305px;
 }
 
 #victoryScreen {
