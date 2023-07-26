@@ -13,8 +13,9 @@ class Game {
             450,
             100,
             150,
-            "./docs/images/player-idle-right.gif"
-
+            "./docs/images/player-idle-right.gif",
+            "./docs/images/running-left.gif",
+            "./docs/images/running-right.gif"
         );
         
         // obstacles
@@ -67,30 +68,28 @@ class Game {
 
     update(){    
         let lives = document.getElementById("lives");
-        lives.innerHTML = `Lives: ${this.lives}`;
+    lives.innerHTML = `Lives: ${this.lives}`;
 
-        this.player.move();
-        
-        if (this.lives === 0) {
-            this.endGame();
-        }
-        
+    this.player.move();
+    
+    for (let i = 0; i < this.obstacles.length; i++) {
+        const obstacle = this.obstacles[i];
+        obstacle.move();
 
-        
-
-      for (let i = 0; i < this.obstacles.length; i++) {
-          const obstacle = this.obstacles[i];
-          obstacle.move();
-
-          if (this.player.didCollide(obstacle)) {
-            obstacle.element.remove();
-  
+        if (this.player.didCollide(obstacle)) {
+            obstacle.container.remove(); // Remove the obstacle's container
             this.obstacles.splice(i, 1);
             this.lives--;
-            
-          } else if (obstacle.left < 0) {
-            obstacle.element.remove();
-            this.obstacles.splice(i,1)
+
+            // Update the displayed lives in the DOM
+            lives.innerHTML = `Lives: ${this.lives}`;
+
+            if (this.lives === 0) {
+                this.endGame();
+            }
+        } else if (obstacle.left < 0) {
+            obstacle.container.remove(); // Remove the obstacle's container
+            this.obstacles.splice(i, 1);
             } 
         }    
 
@@ -106,9 +105,9 @@ class Game {
     }
    
     victoryGame(){
-        this.player.element.remove();
+        this.player.container.remove();
         this.obstacles.forEach(obstacle => {
-            obstacle.element.remove();
+            obstacle.container.remove();
         });
       
         this.gameIsOver = true;
@@ -118,14 +117,14 @@ class Game {
     }
 
     endGame() {
-        this.player.element.remove();
-        this.obstacles.forEach(obstacle => {
-            obstacle.element.remove();
-        });
-      
-        this.gameIsOver = true;
+        this.player.container.remove();
+    this.obstacles.forEach(obstacle => {
+        obstacle.container.remove();
+    });
   
-        this.gameScreen.style.display = "none";
-        this.gameEndScreen.style.display = "block";
+    this.gameIsOver = true;
+
+    this.gameScreen.style.display = "none";
+    this.gameEndScreen.style.display = "block";
     }
 }

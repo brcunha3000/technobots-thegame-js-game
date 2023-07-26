@@ -2,7 +2,7 @@ window.onload = function () {
     const startButton = document.getElementById("button-start");
     const creditsButton = document.getElementById("button-credits");
     const creditsScreen = document.getElementById("creditsScreen");
-    
+
     
     startButton.addEventListener("click", function () {
       startGame();
@@ -60,6 +60,7 @@ window.onload = function () {
     }
 
     function handleKeyDown (event) {
+       const playerImage = document.getElementById("player");
         const key = event.key;
         const possibleKeystrokes = [
             "ArrowLeft",
@@ -68,29 +69,37 @@ window.onload = function () {
 
         ]
     
-        // Check if the pressend key belong to the array of possible keys
+        // Check if the pressed key belong to the array of possible keys
         if (possibleKeystrokes.includes(key)) {
           // prevent the default actions from happening
           event.preventDefault();
     
           // Only when we have a game loaded, we can move the player
-          if (game) {
-            switch(key){
-                case "ArrowLeft": 
-                game.player.directionX = -5;
-                break;
-              case "ArrowUp": 
-                game.player.directionY = -10;
-                console.log('here')
-                break;
-              case "ArrowRight": 
-                game.player.directionX = 5;
-                break;
-            }
+          if (possibleKeystrokes.includes(key)) {
+            event.preventDefault();
+    
+            if (game) {
+              switch (key) {
+                  case "ArrowLeft":
+                      game.player.directionX = -5;
+                      game.player.facingDirection = "left";
+                      break;
+                  case "ArrowRight":
+                      game.player.directionX = 5;
+                      game.player.facingDirection = "right";
+                      break;
+                  case "ArrowUp":
+                      game.player.directionY = -5; // You can adjust the Y-axis movement speed here
+                      break;
+                  case "ArrowDown":
+                      game.player.directionY = 5; // You can adjust the Y-axis movement speed here
+                      break;
+              }
+              game.player.updatePlayerImage();
           }
         }
       }
-    
+    }
       function handleKeyUp (event) {
         const key = event.key;
         const possibleKeystrokes = [
@@ -99,37 +108,24 @@ window.onload = function () {
             "ArrowRight"
         ]
     
-        // Check if the pressend key belong to the array of possible keys
-        if (possibleKeystrokes.includes(key)) {
-          // prevent the default actions from happening
-          event.preventDefault();
-    
-          // Only when we have a game loaded, we can move the player
-          if (game) {
-            switch(key){
-                case "ArrowLeft": 
-                game.player.directionX = 0;
-                break;
-              case "ArrowUp": 
-                game.player.directionY = 10;
-                break;
-              case "ArrowRight": 
-                game.player.directionX = 0;
-                break;
+        // Check if the pressed key belong to the array of possible keys
+        if (game) {
+          switch (key) {
+              case "ArrowLeft":
+              case "ArrowRight":
+                  game.player.directionX = 0;
+                  game.player.facingDirection = "idle";
+                  break;
+              case "ArrowUp":
+              case "ArrowDown":
+                  game.player.directionY = 0;
+                  break;
+          }
+          game.player.updatePlayerImage();
             }
           }
-        }
-      }
+      
       // Function that handles keyup (releasing the key) events
       window.addEventListener("keydown", handleKeyDown);
       window.addEventListener("keyup", handleKeyUp);
-
-
-
-
-
-
-
-
-
 }

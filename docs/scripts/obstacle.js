@@ -6,29 +6,37 @@ class ObstacleBottom {
         this.width = 100;
         this.height = 150;
 
+        this.container = document.createElement("div");
+        this.container.style.position = "absolute";
+        this.container.style.left = `${this.left}px`;
+        this.container.style.top = `${this.top}px`;
+        this.container.style.width = `${this.width}px`;
+        this.container.style.height = `${this.height}px`;
+
         this.element = document.createElement("img");
         this.element.src = "./docs/images/bottom-obstacle.gif";
         this.element.style.position = "absolute";
-        this.element.style.top = `${this.top}px`;
-        this.element.style.left = `${this.left}px`;
+        this.element.style.top = `0px`;
+        this.element.style.left = `0px`;
         this.element.style.height = `${this.height}px`;
         this.element.style.width = `${this.width}px`;
 
-        this.gameScreen.appendChild(this.element);
+        this.container.appendChild(this.element);
+        this.gameScreen.appendChild(this.container);
     }
     
-    updatePosition(){
-        this.element.style.left = `${this.left}px`;
+    updatePosition() {
+        this.container.style.left = `${this.left}px`;
     }
 
-    move(){        
+    move() {
         this.left -= 3;
         this.updatePosition();
     }
 
     collidedWithPlayer(player) {
-        const playerRect = player.element.getBoundingClientRect();
-        const obstacleRect = this.element.getBoundingClientRect();
+        const playerRect = player.container.getBoundingClientRect();
+        const obstacleRect = this.container.getBoundingClientRect();
 
         if (
             playerRect.left < obstacleRect.right &&
@@ -36,9 +44,10 @@ class ObstacleBottom {
             playerRect.top < obstacleRect.bottom &&
             playerRect.bottom > obstacleRect.top
         ) {
-            return true; 
+            return true;
         }
 
-        return false; 
+        return false;
     }
 }
+

@@ -1,5 +1,5 @@
 class Player {
-    constructor(gameScreen,left,top,width,height,imgSrc){
+    constructor(gameScreen,left,top,width,height,idleImage,runningLeftImage, runningRightImage){
         this.gameScreen = gameScreen;
         this.left = left;
         this.top = top;
@@ -7,29 +7,45 @@ class Player {
         this.height = height;
         this.directionX = 0;
         this.directionY = 0;
-
-        this.element = document.createElement("img");
-        this.element.src = imgSrc;
-        this.element.style.position = "absolute";
-        this.element.style.width=`${width}px`;
-        this.element.style.height=`${height}px`;
-        this.element.style.left=`${left}px`;
-        this.element.style.top=`${top}px`;
-
-        this.gameScreen.appendChild(this.element);
+        this.idleImage = idleImage;
+        this.runningLeftImage = runningLeftImage;
+        this.runningRightImage = runningRightImage;
+        this.facingDirection = "right";
+        this.container = document.createElement("div");
+        this.container.style.position = "absolute";
+        this.container.style.left = `${this.left}px`;
+        this.container.style.top = `${this.top}px`;
+        this.container.style.width = `${this.width}px`;
+        this.container.style.height = `${this.height}px`;
+        this.playerImage = document.createElement("img");
+        this.playerImage.src = this.idleImage;
+        this.playerImage.style.position = "absolute";
+        this.playerImage.style.width = `${this.width}px`;
+        this.playerImage.style.height = `${this.height}px`;
+        this.container.appendChild(this.playerImage);
+        this.gameScreen.appendChild(this.container);
+    }
+   
+    updatePlayerImage() {
+        if (this.facingDirection === "left") {
+            this.playerImage.src = this.runningLeftImage;
+        } else if (this.facingDirection === "right") {
+            this.playerImage.src = this.runningRightImage;
+        } else {
+            this.playerImage.src = this.idleImage;
+        }
     }
     
     move(){
-        this.top+=this.directionY;
-        this.left+=this.directionX;
-        
+        this.top += this.directionY;
+        this.left += this.directionX;
+
         if (this.top < 300) {
             this.top = 300;
         } else if (this.top > 450) {
             this.top = 450;
-        } 
-        
-        
+        }
+
         if (this.left + this.width > this.gameScreen.offsetWidth) {
             this.left = this.gameScreen.offsetWidth - this.width;
         } else if (this.left < 0) {
@@ -39,25 +55,23 @@ class Player {
         this.updatePosition();
     }
 
-    updatePosition(){
-        this.element.style.left = `${this.left}px`;
-        this.element.style.top = `${this.top}px`;
+    updatePosition() {
+        this.container.style.left = `${this.left}px`;
+        this.container.style.top = `${this.top}px`;
     }
 
-    didCollide(obstacle){
-        const playerRect = this.element.getBoundingClientRect();
-        const obstacleRect = obstacle.element.getBoundingClientRect();
+    didCollide(obstacle) {
+        const playerRect = this.container.getBoundingClientRect();
+        const obstacleRect = obstacle.container.getBoundingClientRect();
         
-
         if (playerRect.left < obstacleRect.right && playerRect.right > obstacleRect.left && playerRect.top < obstacleRect.bottom && playerRect.bottom > obstacleRect.top) {
-
             return true;
         } else {
-
             return false;
         }
     }
 }
+
 
 
 
