@@ -2,9 +2,9 @@ class ObstacleBottom {
     constructor(gameScreen) {
         this.gameScreen = gameScreen;
         this.left = 1100;
-        this.top = 450;
-        this.width = 100;
-        this.height = 150;
+        this.top = 500;
+        this.width = 70;
+        this.height = 100;
 
         this.container = document.createElement("div");
         this.container.style.position = "absolute";
@@ -30,7 +30,7 @@ class ObstacleBottom {
     }
 
     move() {
-        this.left -= 3;
+        this.left -= 5;
         this.updatePosition();
     }
 

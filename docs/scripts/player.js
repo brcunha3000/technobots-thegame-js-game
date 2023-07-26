@@ -7,6 +7,9 @@ class Player {
         this.height = height;
         this.directionX = 0;
         this.directionY = 0;
+        this.gravity = 0;
+        this.isJumping = false;
+
         this.idleImage = idleImage;
         this.runningLeftImage = runningLeftImage;
         this.runningRightImage = runningRightImage;
@@ -40,10 +43,20 @@ class Player {
         this.top += this.directionY;
         this.left += this.directionX;
 
+        // Handling the top part
         if (this.top < 300) {
             this.top = 300;
-        } else if (this.top > 450) {
-            this.top = 450;
+        }
+        else if (this.top >= 300 && this.isJumping){
+            this.gravity +=1;
+            this.top += this.gravity;
+        }
+
+        // Handling the bottom part
+        if (this.top > 450 && this.isJumping) {
+            this.top = 449;
+            this.gravity = 0;
+            this.isJumping = false;
         }
 
         if (this.left + this.width > this.gameScreen.offsetWidth) {
@@ -58,6 +71,11 @@ class Player {
     updatePosition() {
         this.container.style.left = `${this.left}px`;
         this.container.style.top = `${this.top}px`;
+    }
+
+    jump(){
+        this.gravity = -18;
+        this.isJumping = true;
     }
 
     didCollide(obstacle) {

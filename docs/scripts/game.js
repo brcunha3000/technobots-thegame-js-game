@@ -36,12 +36,12 @@ class Game {
         let timer = document.getElementById("timer");
         
         const updateTimer = () => {
-            this.timer++ ;
+            this.timer++;
             timer.innerHTML = `Round time ${this.timer}`;
         }
 
         setInterval(() => {
-            if (this.lives > 1) {
+            if (this.lives > 0) {
                 this.victoryGame();}
         }, 30000);
 
@@ -58,7 +58,7 @@ class Game {
          if (this.gameIsOver) {
             return;
         }
-
+        
 
                 
         this.update();       
@@ -68,30 +68,30 @@ class Game {
 
     update(){    
         let lives = document.getElementById("lives");
-    lives.innerHTML = `Lives: ${this.lives}`;
+        lives.innerHTML = `Lives: ${this.lives}`;
 
-    this.player.move();
+        this.player.move();
     
-    for (let i = 0; i < this.obstacles.length; i++) {
+        for (let i = 0; i < this.obstacles.length; i++) {
         const obstacle = this.obstacles[i];
         obstacle.move();
 
-        if (this.player.didCollide(obstacle)) {
-            obstacle.container.remove(); // Remove the obstacle's container
-            this.obstacles.splice(i, 1);
-            this.lives--;
+            if (this.player.didCollide(obstacle)) {
+                obstacle.container.remove(); // Remove the obstacle's container
+                this.obstacles.splice(i, 1);
+                this.lives--;
 
-            // Update the displayed lives in the DOM
-            lives.innerHTML = `Lives: ${this.lives}`;
+                // Update the displayed lives in the DOM
+                lives.innerHTML = `Lives: ${this.lives}`;
 
-            if (this.lives === 0) {
-                this.endGame();
-            }
-        } else if (obstacle.left < 0) {
-            obstacle.container.remove(); // Remove the obstacle's container
-            this.obstacles.splice(i, 1);
-            } 
-        }    
+                if (this.lives === 0) {
+                    this.endGame();
+                }
+                } else if (obstacle.left < 0) {
+                    obstacle.container.remove(); // Remove the obstacle's container
+                    this.obstacles.splice(i, 1);
+                } 
+            }    
 
     
         if(!this.obstacles.length && !this.isPushingObstacle){
@@ -118,7 +118,7 @@ class Game {
 
     endGame() {
         this.player.container.remove();
-    this.obstacles.forEach(obstacle => {
+        this.obstacles.forEach(obstacle => {
         obstacle.container.remove();
     });
   

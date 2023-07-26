@@ -173,6 +173,7 @@ body {
     color: black;
     text-transform: uppercase;
     justify-content: center;
+    align-items: center;
     width: 15%;
     height: 50px;
     border-radius: 5px;
@@ -190,7 +191,7 @@ body {
     touch-action: manipulation;
     display:flex;
     left: 675px;
-    top: 305px;
+    top: 370px; 
     
 }
 
@@ -219,8 +220,7 @@ body {
 }
 
 #victoryScreen {
-    /*background-image: url(/docs/images/lost-game-screen.gif);*/
-    background-color: black;
+    background-image: url(/docs/images/victory-screen.gif);
     width: 1280px;
     height: 720px;  
     display: none;
@@ -233,4 +233,29 @@ body {
     flex-direction: column;
     border-radius: 5px;
     margin: 0 auto;
+}
+
+.button-return-startScreen-2{
+    color: black;
+    text-transform: uppercase;
+    justify-content: center;
+    align-items: center;
+    width: 15%;
+    height: 50px;
+    border-radius: 5px;
+    margin-top: 20%;
+    font-weight: bold;
+    font-size: 30px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin-left: 375px;
+    animation: rotate-scale-down-horizontal 0.4s linear both;
+    cursor: crosshair;
+    box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
+    position: relative;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    display:flex;
+    left: 675px;
+    top: 370px;  
 }

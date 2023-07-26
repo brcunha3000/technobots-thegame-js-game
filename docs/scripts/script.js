@@ -30,14 +30,6 @@ window.onload = function () {
       location.reload();
     })
 
-    const restartButton = document.querySelector(".button-restart")
-    restartButton.addEventListener("click", function () {
-      gameEndScreen.style.display = "none";
-        
-      startGame();
-      
-    })
-
     const returnStartMenuFromVictory = document.querySelector(".button-return-startScreen-2")
     returnStartMenuFromVictory.addEventListener("click", function () {
       victoryScreen.style.display = "none";
@@ -58,7 +50,7 @@ window.onload = function () {
         game.start();
         
     }
-
+    
     function handleKeyDown (event) {
        const playerImage = document.getElementById("player");
         const key = event.key;
@@ -74,10 +66,6 @@ window.onload = function () {
           // prevent the default actions from happening
           event.preventDefault();
     
-          // Only when we have a game loaded, we can move the player
-          if (possibleKeystrokes.includes(key)) {
-            event.preventDefault();
-    
             if (game) {
               switch (key) {
                   case "ArrowLeft":
@@ -85,21 +73,23 @@ window.onload = function () {
                       game.player.facingDirection = "left";
                       break;
                   case "ArrowRight":
-                      game.player.directionX = 5;
+                      game.player.directionX = 8;
                       game.player.facingDirection = "right";
                       break;
                   case "ArrowUp":
-                      game.player.directionY = -5; // You can adjust the Y-axis movement speed here
-                      break;
-                  case "ArrowDown":
-                      game.player.directionY = 5; // You can adjust the Y-axis movement speed here
+                    console.log("test");
+                      if (game.player.top >= 449){
+                        game.player.jump();
+                        break;
+                      }
+                      
                       break;
               }
               game.player.updatePlayerImage();
           }
         }
       }
-    }
+    
       function handleKeyUp (event) {
         const key = event.key;
         const possibleKeystrokes = [
@@ -117,6 +107,8 @@ window.onload = function () {
                   game.player.facingDirection = "idle";
                   break;
               case "ArrowUp":
+                  game.player.directionY = 0;
+                  break;
               case "ArrowDown":
                   game.player.directionY = 0;
                   break;
