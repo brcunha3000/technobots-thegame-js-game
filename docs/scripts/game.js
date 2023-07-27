@@ -76,7 +76,6 @@ class Game {
     }  
 
     update(){    
-
         let lives = document.getElementById("lives");
         lives.innerHTML = `Lives: ${this.lives}`;
 
@@ -109,21 +108,36 @@ class Game {
                     this.obstacles.splice(i, 1);
             } 
         }    
-
-    
-            if(!this.obstacles.length && !this.isPushingObstacle){
-            this.isPushingObstacle = true;
-        
-            setTimeout(() => {
-                const newObstacle = new ObstacleBottom(this.gameScreen, this.obstacleImages,);
-                this.obstacles.push(newObstacle);
-                for (let i =0; i< this.obstacles.length; i++){
-                    this.obstacles[i].getRandomObstacleImage();
+            if (this.timer < 30){
+                if(!this.obstacles.length && !this.isPushingObstacle){
+                this.isPushingObstacle = true;
+            
+                    setTimeout(() => {
+                        const newObstacle = new ObstacleBottom(this.gameScreen, this.obstacleImages,);
+                        this.obstacles.push(newObstacle);
+                        for (let i =0; i< this.obstacles.length; i++){
+                            this.obstacles[i].getRandomObstacleImage();
+                        }
+                        this.isPushingObstacle = false;
+                    }, 100);
                 }
-                this.isPushingObstacle = false;
-            }, 100);
-        }
-    }
+
+            }  else {
+                if(this.obstacles.length < 2 && !this.isPushingObstacle){
+                    this.isPushingObstacle = true;
+                
+                    setTimeout(() => {
+                        const newObstacle = new ObstacleBottom(this.gameScreen, this.obstacleImages,);
+                        this.obstacles.push(newObstacle);
+                        for (let i =0; i< this.obstacles.length; i++){
+                            this.obstacles[i].getRandomObstacleImage();
+                        }
+                        this.isPushingObstacle = false;
+                    }, 1500);
+                } 
+            }
+    }   
+    
     
     // Getting variations of the obstacles
     getRandomObstacleImage() {
