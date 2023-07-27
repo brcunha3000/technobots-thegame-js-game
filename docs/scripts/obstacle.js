@@ -16,11 +16,6 @@ class ObstacleBottom {
         this.element.style.height = `${this.height}px`;
         this.element.style.width = `${this.width}px`;
 
-        this.element.src = this.getRandomObstacleImage();
-
-
-      
-        //this.element.src = "./docs/images/bottom-obstacle.gif"; - to remove this//
         this.gameScreen.appendChild(this.element);
     }
     

@@ -15,12 +15,12 @@
         <button id="button-music-on-off"></button>
         <audio id="introMusic" loop autoplay>
             <source src="./docs/audio/SoundEffects/loop-file-electric-noise-drum-beat-117185.mp3" type="audio/mp3">
-          Your browser does not support the audio element.
+            Your browser does not support the audio element.
         </audio>
         <div id="helpScreen">
             <h1>Instructions</h1>
             <h3>Objective:</h3>
-            <p>Avoid during 30 seconds colliding with mushroobots.</p>
+            <p>Avoid during 60 seconds colliding with mushroobots.</p>
 
             <h3>Controls:</h3>
             <ul>
@@ -31,10 +31,10 @@
 
             <h3>Gameplay:</h3>
             <ul>
-                <li>You start the game with three lives. 
+                <li>You start the game with five lives. 
                 <li>Avoid colliding with mushroobots, as each collision will cost you one life.</li>
-                <li>If you lose all three lives, the game is over.</li>
-                <li>The game has a 30-second timer. You should hold tight.</li>
+                <li>If you lose all five lives, the game is over.</li>
+                <li>The game has a 60-second timer. You should hold tight.</li>
                 <li></li>
             </ul>
 
@@ -65,18 +65,26 @@
             <source src="./docs/audio/SoundEffects/jump sound.mp3" type="audio/mp3">
             Your browser does not support the audio element.
         </audio>
+        <audio id = "robotHit">
+            <source src="./docs/audio/SoundEffects/obstacle collision.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
+        <audio id = "mushVoice">
+            <source src="./docs/audio/SoundEffects/obstacle-voice.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
     </section> 
 
     <section id="creditsScreen">       
         <button class="return-arrow"></button>
         <div id="credits-logos">
             <img id="github-image" src="./docs/images/github-image.png" alt="github-image"/>
-            <a class="github-one" href="https://github.com/brcunha3000" target="_blank">Bruno Cunha GitHub</a>
+            <a class="github-one" href="https://github.com/brcunha3000" target="_blank"x>Bruno Cunha GitHub</a>
             <a class="github-two" href="https://github.com/Haesonni" target="_blank">Mariana Marques GitHub</a>
         <hr class="line1">
             <img id="linkedin-image" src="./docs/images/linkedin-image.png" alt="linkedin-image"/>
-            <a class="linkedin-one" href="https://github.com/brcunha3000" target="_blank">Bruno Cunha Linkedin</a>
-            <a class="linkedin-two" href="https://github.com/Haesonni" target="_blank">Mariana Marques Linkedin</a>
+            <a class="linkedin-one" href="https://fotos.web.sapo.io/i/Bcf188074/21426528_cFeRM.jpeg" target="_blank">Bruno Cunha Linkedin</a>
+            <a class="linkedin-two" href="https://fotos.web.sapo.io/i/Bcf188074/21426528_cFeRM.jpeg" target="_blank">Mariana Marques Linkedin</a>
         <hr class="line2">
             <img id="art-image" src="./docs/images/art-image.png" alt="art-image"/>
             <a class="art-one" href="https://www.svgrepo.com/" target="_blank">SVG Repo (icons)</a>
@@ -98,6 +106,10 @@
 
     <section id="victoryScreen">       
         <button class="button-return-startScreen-2">Back to Menu</button>
+        <audio id="victoryMusic" loop>
+            <source id="victory-music" src="./docs/audio/SoundEffects/grinder-drum-loop-6697.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
     </section>
 
     <script type="text/javascript" src="./docs/scripts/obstacle.js"></script>

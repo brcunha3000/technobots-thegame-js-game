@@ -10,12 +10,15 @@ window.onload = function () {
     const introMusic = document.getElementById("introMusic");
     const robotTalk = document.getElementById("robotTalk");
     const robotDead = document.getElementById("robotDead");
-    const robotJump = document.getElementById("robotJump")
+    const robotJump = document.getElementById("robotJump");
+    const robotHit = document.getElementById("robotHit");
+    const mushVoice = document.getElementsByName("mushVoice");
+    const victoryMusic = document.getElementById("victory-music");
 
     startButton.addEventListener("click", function () {
+      startGame();
       inGameMusic.play();
       inGameMusic.currentTime = 0; 
-      startGame();
       introMusic.pause();
       robotTalk.play();
     });
@@ -26,9 +29,21 @@ window.onload = function () {
       helpScreen.style.display = "block";
     })
 
-    buttonMusicOnOff.addEventListener("click", function() {
-      introMusic.play();
-    })
+    let isMusicPlaying = false;
+
+    function toggleMusic(){
+      if (isMusicPlaying){
+        introMusic.pause();
+        buttonMusicOnOff.style.backgroundImage = "url('https://i.ibb.co/dbbYn9V/mute.png')";
+        
+      } else {
+        introMusic.play();
+        buttonMusicOnOff.style.backgroundImage = "url('https://i.ibb.co/BBYZvy0/music-on-off.png')";
+      }
+      isMusicPlaying=!isMusicPlaying;
+    }
+
+    document.getElementById("button-music-on-off").addEventListener("click", toggleMusic);
 
     helpReturnButton.addEventListener("click", function() {
       helpScreen.style.display = "none";
@@ -66,6 +81,7 @@ window.onload = function () {
       restartGame();
     })
 
+
     function restartGame(){
       location.reload();
       inGameMusic.pause();
@@ -75,7 +91,6 @@ window.onload = function () {
         console.log("start game");
     
         game = new Game();
-        ;
     
         game.start();        
     }
@@ -98,7 +113,7 @@ window.onload = function () {
             if (game) {
               switch (key) {
                   case "ArrowLeft":
-                      game.player.directionX = -5;
+                      game.player.directionX = -8;
                       game.player.facingDirection = "left";
                       robotMove.play();
                       break;
@@ -130,7 +145,6 @@ window.onload = function () {
             "ArrowRight"
         ]
     
-        // Check if the pressed key belong to the array of possible keys
         if (game) {
           switch (key) {
               case "ArrowLeft":
