@@ -19,6 +19,11 @@ class Game {
         );
         
         // obstacles
+        this.obstacleImages = [
+            "./docs/images/bottom-obstacle.gif",
+            "./docs/images/bottom-obstacle2.gif",
+            "./docs/images/bottom-obstacle3.gif",
+        ];
         this.obstacles = [];
         this.isPushingObstacle = false;
 
@@ -34,10 +39,11 @@ class Game {
         this.gameScreen.style.display = "block";
         
         let timer = document.getElementById("timer");
+        timer.innerHTML = `Round time: ${this.timer}`
         
         const updateTimer = () => {
             this.timer++;
-            timer.innerHTML = `Round time ${this.timer}`;
+            timer.innerHTML = `Round time: ${this.timer}`;
         }
 
         setInterval(() => {
@@ -46,6 +52,8 @@ class Game {
         }, 30000);
 
         setInterval(updateTimer, 1000);
+        introMusic.pause();
+        robotTalk.play();
 
         // Start the game loop
         this.gameLoop();
@@ -55,7 +63,8 @@ class Game {
         console.log("Game Loop");
 
         // Check if the game is over to interrupt the game loop
-         if (this.gameIsOver) {
+        if (this.gameIsOver) {
+            inGameMusic.pause();
             return;
         }
         
@@ -77,7 +86,7 @@ class Game {
         obstacle.move();
 
             if (this.player.didCollide(obstacle)) {
-                obstacle.container.remove(); // Remove the obstacle's container
+                obstacle.element.remove(); // Remove the obstacle's container
                 this.obstacles.splice(i, 1);
                 this.lives--;
 
@@ -86,40 +95,59 @@ class Game {
 
                 if (this.lives === 0) {
                     this.endGame();
+                    inGameMusic.pause();
+                    robotMove.pause();
+                    robotDead.play();
                 }
                 } else if (obstacle.left < 0) {
-                    obstacle.container.remove(); // Remove the obstacle's container
+                    obstacle.element.remove(); // Remove the obstacle's container
                     this.obstacles.splice(i, 1);
                 } 
             }    
 
     
         if(!this.obstacles.length && !this.isPushingObstacle){
-        this.isPushingObstacle = !this.isPushingObstacle;
+        this.isPushingObstacle = true;
         
             setTimeout(() => {
-                this.obstacles.push(new ObstacleBottom(this.gameScreen));
-                this.isPushingObstacle = !this.isPushingObstacle;
+                const newObstacle = new ObstacleBottom(this.gameScreen, this.obstacleImages,);
+                    this.obstacles.push(newObstacle);
+                    for (let i =0; i< this.obstacles.length; i++){
+                        this.obstacles[i].getRandomObstacleImage();
+                    }
+
+                    this.isPushingObstacle = false;
             }, 100);
         }
     }
-   
+
+    getRandomObstacleImage() {
+        const randomIndex = Math.floor(Math.random() * this.obstacleImages.length);
+        return this.obstacleImages[randomIndex];
+    }
+
     victoryGame(){
         this.player.container.remove();
         this.obstacles.forEach(obstacle => {
-            obstacle.container.remove();
+            obstacle.element.remove();
         });
       
         this.gameIsOver = true;
 
         this.gameScreen.style.display = "none";
         this.victoryScreen.style.display = "block";
+
+        inGameMusic.pause();
+        robotMove.pause();
     }
 
     endGame() {
         this.player.container.remove();
         this.obstacles.forEach(obstacle => {
-        obstacle.container.remove();
+        obstacle.element.remove();
+        inGameMusic.pause();
+        robotDead.play();
+        robotMove.pause();
     });
   
     this.gameIsOver = true;

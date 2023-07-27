@@ -2,24 +2,50 @@ window.onload = function () {
     const startButton = document.getElementById("button-start");
     const creditsButton = document.getElementById("button-credits");
     const creditsScreen = document.getElementById("creditsScreen");
+    const buttonHelp = document.getElementById("button-help");
+    const buttonMusicOnOff = document.getElementById("button-music-on-off");
+    const helpReturnButton = document.getElementById("helpScreen-return-button");
+    const inGameMusic = document.getElementById("inGameMusic");
+    const robotMove = document.getElementById("robotMove");
+    const introMusic = document.getElementById("introMusic");
+    const robotTalk = document.getElementById("robotTalk");
+    const robotDead = document.getElementById("robotDead");
 
-    
     startButton.addEventListener("click", function () {
+      inGameMusic.play();
+      inGameMusic.currentTime = 0; 
       startGame();
-
+      introMusic.pause();
+      robotTalk.play();
     });
     
     let game;
+
+    buttonHelp.addEventListener("click", function() {
+      helpScreen.style.display = "block";
+    })
+
+    buttonMusicOnOff.addEventListener("click", function() {
+      introMusic.play();
+    })
+
+    helpReturnButton.addEventListener("click", function() {
+      helpScreen.style.display = "none";
+    })
   
     creditsButton.addEventListener("click", function() {
       startScreen.style.display = "none";      
       creditsScreen.style.display = "block";
+      inGameMusic.pause();
+      robotMove.pause();
     })
 
     const returnButton = document.querySelector(".return-arrow")
     returnButton.addEventListener("click", function () {
       creditsScreen.style.display = "none";
       startScreen.style.display = "block";
+      inGameMusic.pause();
+      robotMove.pause();
       restartGame();
     })
 
@@ -28,17 +54,20 @@ window.onload = function () {
       gameEndScreen.style.display = "none";
       startScreen.style.display = "block";
       location.reload();
+      inGameMusic.pause();
     })
 
     const returnStartMenuFromVictory = document.querySelector(".button-return-startScreen-2")
     returnStartMenuFromVictory.addEventListener("click", function () {
       victoryScreen.style.display = "none";
       startScreen.style.display = "block";
+      inGameMusic.pause();
       restartGame();
     })
 
     function restartGame(){
       location.reload();
+      inGameMusic.pause();
     }
     
     function startGame() {
@@ -47,8 +76,7 @@ window.onload = function () {
         game = new Game();
         ;
     
-        game.start();
-        
+        game.start();        
     }
     
     function handleKeyDown (event) {

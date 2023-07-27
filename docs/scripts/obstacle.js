@@ -1,32 +1,36 @@
 class ObstacleBottom {
-    constructor(gameScreen) {
+    constructor(gameScreen, obstacleImages) {
         this.gameScreen = gameScreen;
-        this.left = 1100;
+        this.left = 1300;
         this.top = 500;
         this.width = 70;
         this.height = 100;
-
-        this.container = document.createElement("div");
-        this.container.style.position = "absolute";
-        this.container.style.left = `${this.left}px`;
-        this.container.style.top = `${this.top}px`;
-        this.container.style.width = `${this.width}px`;
-        this.container.style.height = `${this.height}px`;
+        this.obstacleImages = obstacleImages;
 
         this.element = document.createElement("img");
-        this.element.src = "./docs/images/bottom-obstacle.gif";
+        this.element.src = this.getRandomObstacleImage();
+
         this.element.style.position = "absolute";
-        this.element.style.top = `0px`;
-        this.element.style.left = `0px`;
+        this.element.style.top = `${this.top}px`;
+        this.element.style.left = `${this.left}px`;
         this.element.style.height = `${this.height}px`;
         this.element.style.width = `${this.width}px`;
 
-        this.container.appendChild(this.element);
-        this.gameScreen.appendChild(this.container);
+        this.element.src = this.getRandomObstacleImage();
+
+
+      
+        //this.element.src = "./docs/images/bottom-obstacle.gif"; - to remove this//
+        this.gameScreen.appendChild(this.element);
     }
     
+    getRandomObstacleImage() {
+        const randomIndex = Math.floor(Math.random() * this.obstacleImages.length);
+        return this.obstacleImages[randomIndex];
+    } // random images function
+
     updatePosition() {
-        this.container.style.left = `${this.left}px`;
+        this.element.style.left = `${this.left}px`;
     }
 
     move() {
