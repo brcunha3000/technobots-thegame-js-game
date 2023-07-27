@@ -10,6 +10,7 @@ window.onload = function () {
     const introMusic = document.getElementById("introMusic");
     const robotTalk = document.getElementById("robotTalk");
     const robotDead = document.getElementById("robotDead");
+    const robotJump = document.getElementById("robotJump")
 
     startButton.addEventListener("click", function () {
       inGameMusic.play();
@@ -53,7 +54,7 @@ window.onload = function () {
     returnStartMenu.addEventListener("click", function () {
       gameEndScreen.style.display = "none";
       startScreen.style.display = "block";
-      location.reload();
+      restartGame()
       inGameMusic.pause();
     })
 
@@ -99,15 +100,18 @@ window.onload = function () {
                   case "ArrowLeft":
                       game.player.directionX = -5;
                       game.player.facingDirection = "left";
+                      robotMove.play();
                       break;
                   case "ArrowRight":
                       game.player.directionX = 8;
                       game.player.facingDirection = "right";
+                      robotMove.play();
                       break;
                   case "ArrowUp":
                     console.log("test");
                       if (game.player.top >= 449){
                         game.player.jump();
+                        robotJump.play();
                         break;
                       }
                       
@@ -133,12 +137,11 @@ window.onload = function () {
               case "ArrowRight":
                   game.player.directionX = 0;
                   game.player.facingDirection = "idle";
+                  robotMove.pause();
                   break;
               case "ArrowUp":
                   game.player.directionY = 0;
-                  break;
-              case "ArrowDown":
-                  game.player.directionY = 0;
+                  robotJump.pause();
                   break;
           }
           game.player.updatePlayerImage();

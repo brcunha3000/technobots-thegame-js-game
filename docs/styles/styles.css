@@ -9,7 +9,7 @@ body {
 #startScreen{
     width: 1280px;
     height: 720px;
-    background-image: url(/docs/images/start-screen.gif);
+    background-image: url(https://i.ibb.co/SJ9mqXw/start-screen.gif);
     border: 5px solid black;
     position: relative;
     overflow: hidden;
@@ -95,7 +95,7 @@ body {
     position: relative;
     width: 60px;
     height: 60px;
-    background-image: url(/docs/images/help-image.png);
+    background-image: url(https://i.ibb.co/5TStZ6q/help-image.png);
     background-size: contain;
     background-repeat: no-repeat;
     border-radius:8px;
@@ -111,7 +111,7 @@ body {
 }
 
 #button-music-on-off{
-    background-image: url(/docs/images/music-on-off.png);
+    background-image: url(https://i.ibb.co/BBYZvy0/music-on-off.png);
     background-size: contain;
     display:flex;
     position: relative;
@@ -134,7 +134,7 @@ body {
     bottom: 10px;
     right: 10px;
     border-radius: 8px;
-    background-image: url(/docs/images/return-arrow.png);
+    background-image: url(https://i.ibb.co/nMybwhD/return-arrow.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -157,7 +157,7 @@ body {
     display: none;
     width: 1280px;
     height: 720px;
-    background-image: url(/docs/images/gamescreen-background.png);
+    background-image: url(https://i.ibb.co/Hnp59XF/gamescreen-background.png);
     background-size: cover;
     position: relative;
     overflow: hidden;
@@ -183,7 +183,7 @@ body {
     background-color:grey;
     text-transform: uppercase;
     font-size: 25px; 
-    opacity: 80%;
+    opacity: 70%;
     margin-left: 375px;
     margin-top: 20px;
     border-left: 5px solid black;
@@ -225,7 +225,7 @@ body {
 }
 
 #creditsScreen {
-    background-image: url(/docs/images/credits-screen.gif);
+    background-image: url(https://i.ibb.co/ZTN5kxC/credits-screen.gif);
     width: 1280px;
     height: 720px;  
     display: none;
@@ -383,7 +383,7 @@ body {
     bottom: 10px;
     right: 10px;
     border-radius: 8px;
-    background-image: url(/docs/images/return-arrow.png);
+    background-image: url(https://i.ibb.co/nMybwhD/return-arrow.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -391,7 +391,7 @@ body {
 }
 
 #gameEndScreen{
-    background-image: url(/docs/images/lost-game-screen.gif);
+    background-image: url(https://i.ibb.co/SnMpqXD/lost-game-screen.gif);
     width: 1280px;
     height: 720px;  
     display: none;
@@ -458,7 +458,7 @@ body {
 }
 
 #victoryScreen {
-    background-image: url(/docs/images/victory-screen.gif);
+    background-image: url(https://i.ibb.co/4jn4k2L/victory-screen.gif);
     width: 1280px;
     height: 720px;  
     display: none;
